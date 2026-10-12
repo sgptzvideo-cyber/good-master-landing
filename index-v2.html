@@ -50,8 +50,10 @@
   .hero { padding: 80px 0 100px; }
   .hero .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
   @media (max-width: 960px) { .hero .grid { grid-template-columns: 1fr; gap: 48px; } }
+  @media (max-width: 640px) { .hero { padding: 56px 0 72px; } .hero .grid { gap: 32px; } }
   .kicker { font-size: 13px; letter-spacing: .15em; text-transform: uppercase; color: var(--accent); font-weight: 600; }
-  .hero h1 { font-family: var(--serif); font-weight: 800; font-size: clamp(52px, 8vw, 72px); line-height: .95; margin: 12px 0 24px; letter-spacing: -.02em; }
+  .hero h1 { font-family: var(--serif); font-weight: 800; font-size: clamp(42px, 7vw, 72px); line-height: .95; margin: 12px 0 24px; letter-spacing: -.02em; }
+  @media (max-width: 640px) { .hero h1 { font-size: 36px; } }
   .hero p { font-size: 18px; line-height: 1.7; color: var(--mute); max-width: 520px; margin: 0 0 32px; }
   .actions { display: flex; gap: 16px; flex-wrap: wrap; }
   .facts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; margin-top: 56px; }
@@ -60,13 +62,15 @@
   .fact-num { font-family: var(--serif); font-weight: 700; font-size: 48px; line-height: 1; color: var(--ink); }
   .fact-label { font-size: 13px; color: var(--mute); margin-top: 8px; }
   .team-hero { position: relative; aspect-ratio: 1; overflow: hidden; border-radius: 12px; background: #e6e4e0; }
-  .team-hero img { width: 100%; height: 100%; object-fit: cover; }
+  .team-hero img { width: 100%; height: 100%; object-fit: cover; object-position: center 30%; }
+  @media (max-width: 640px) { .team-hero { aspect-ratio: 4 / 5; } }
 
   /* Team Section - Full Width */
   .team-section { background: var(--ink); color: var(--white); padding: 80px 0; margin: 100px 0 0; }
   .team-section h2 { font-family: var(--serif); font-weight: 800; font-size: clamp(48px, 7vw, 68px); margin: 0 0 48px; line-height: .98; }
   .team-photo { width: 100%; aspect-ratio: 16 / 10; overflow: hidden; border-radius: 12px; margin-bottom: 40px; }
-  .team-photo img { width: 100%; height: 100%; object-fit: cover; }
+  .team-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center 35%; }
+  @media (max-width: 760px) { .team-photo { aspect-ratio: 4 / 5; margin-bottom: 32px; } }
   .team-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
   @media (max-width: 960px) { .team-grid { grid-template-columns: 1fr; } }
   .team-card { }
@@ -109,12 +113,27 @@
   /* Gallery */
   .gallery { padding: 100px 0; }
   .gallery h2 { font-family: var(--serif); font-weight: 800; font-size: clamp(48px, 7vw, 68px); margin: 0 0 56px; line-height: .98; }
+  .gallery-tabs { display: flex; gap: 12px; margin-bottom: 32px; }
+  .gallery-tab { background: var(--white); color: var(--mute); border: 2px solid var(--line); border-radius: 8px; padding: 11px 24px; font: 500 15px var(--sans); cursor: pointer; transition: all .3s; }
+  .gallery-tab:hover { border-color: var(--ink); color: var(--ink); }
+  .gallery-tab.on { background: var(--ink); color: var(--white); border-color: var(--ink); }
   .mosaic { display: grid; gap: 16px; grid-template-columns: repeat(4, 1fr); margin-top: 32px; }
   @media (max-width: 1200px) { .mosaic { grid-template-columns: repeat(3, 1fr); gap: 12px; } }
   @media (max-width: 760px) { .mosaic { grid-template-columns: repeat(2, 1fr); gap: 10px; } }
   .mosaic figure { margin: 0; aspect-ratio: 3 / 4; overflow: hidden; border-radius: 8px; background: #e6e4e0; cursor: pointer; }
   .mosaic img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s cubic-bezier(.2,.8,.2,1); }
   .mosaic figure:hover img { transform: scale(1.05); }
+
+  /* Слайдшоу работ */
+  .works-carousel { margin-top: 40px; position: relative; }
+  .works-slider { display: flex; gap: 16px; overflow-x: auto; scroll-behavior: smooth; padding-bottom: 12px; }
+  .works-slider::-webkit-scrollbar { height: 6px; }
+  .works-slider::-webkit-scrollbar-track { background: var(--line); border-radius: 3px; }
+  .works-slider::-webkit-scrollbar-thumb { background: var(--ink); border-radius: 3px; }
+  .work-card { flex: 0 0 320px; aspect-ratio: 3 / 4; overflow: hidden; border-radius: 8px; background: #e6e4e0; cursor: pointer; }
+  .work-card img { width: 100%; height: 100%; object-fit: cover; transition: transform .4s ease; }
+  .work-card:hover img { transform: scale(1.03); }
+  @media (max-width: 760px) { .work-card { flex: 0 0 240px; } }
 
   /* Promo */
   .promo { background: linear-gradient(135deg, var(--ink) 0%, #2a2a2a 100%); color: var(--white); padding: 64px; border-radius: 12px; margin: 100px 0; display: grid; gap: 16px; }
@@ -148,6 +167,10 @@
   .dock .t-label { font-size: 12px; color: var(--mute); margin-top: 4px; }
   .dock .btn { padding: 10px 20px; }
   @media (max-width: 1000px) { .dock { display: flex; } .sum { position: static; } }
+
+  /* Анимации при прокрутке */
+  .fade-in { opacity: 0; transform: translateY(28px); transition: opacity .8s ease, transform .8s cubic-bezier(.2,.8,.2,1); }
+  .fade-in.in { opacity: 1; transform: translateY(0); }
 
   @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after { animation: none !important; transition: none !important; }
@@ -204,11 +227,11 @@
 
   <section class="team-section" id="team">
     <div class="wrap">
-      <h2>Встречайте нашу команду</h2>
-      <div class="team-photo">
+      <h2 class="fade-in">Встречайте нашу команду</h2>
+      <div class="team-photo fade-in">
         <img src="img/team-web.jpg" alt="Полная команда студии GOOD MASTER" onerror="this.remove()">
       </div>
-      <div class="team-grid">
+      <div class="team-grid fade-in">
         <div class="team-card">
           <h3>Мария</h3>
           <div class="role">Бровист · Перманент</div>
@@ -230,14 +253,14 @@
 
   <section class="services" id="services">
     <div class="wrap">
-      <h2>Подберите услуги</h2>
+      <h2 class="fade-in">Подберите услуги</h2>
       <div class="picker">
-        <div>
+        <div class="fade-in">
           <div class="tabs" id="tabs"></div>
           <ul class="svc-list" id="list"></ul>
           <p style="font-size:14px;color:var(--mute);margin-top:20px;line-height:1.6">Цены обновлены 12.10.2026 из группы ВКонтакте. Точная стоимость зависит от мастера и объёма работ, администратор подтвердит её при записи.</p>
         </div>
-        <aside class="sum">
+        <aside class="sum fade-in">
           <div class="label">Примерная сумма</div>
           <div class="total" id="total">0 ₽</div>
           <div class="count" id="count">Отметьте услуги</div>
@@ -250,21 +273,42 @@
 
   <section class="gallery">
     <div class="wrap">
-      <h2>Атмосфера студии</h2>
-      <div class="mosaic">
-        <figure><img src="img/card.jpg" alt="Визитка студии" loading="lazy"></figure>
-        <figure><img src="img/peonies.jpg" alt="Цветы и конверт" loading="lazy"></figure>
-        <figure><img src="img/coffee.jpg" alt="Кофе" loading="lazy"></figure>
-        <figure><img src="img/bottles.jpg" alt="Средства для ухода" loading="lazy"></figure>
-        <figure><img src="img/brushes.jpg" alt="Профессиональные кисти" loading="lazy"></figure>
-        <figure><img src="img/interior.jpg" alt="Рабочее место" loading="lazy"></figure>
+      <h2>Портфолио и атмосфера</h2>
+      <div class="gallery-tabs" id="gallery-tabs">
+        <button class="gallery-tab on" data-tab="studio">Студия</button>
+        <button class="gallery-tab" data-tab="works">Работы мастеров</button>
+      </div>
+
+      <div id="studio-tab">
+        <div class="mosaic">
+          <figure class="fade-in"><img src="img/card.jpg" alt="Визитка студии" loading="lazy"></figure>
+          <figure class="fade-in"><img src="img/peonies.jpg" alt="Цветы и конверт" loading="lazy"></figure>
+          <figure class="fade-in"><img src="img/coffee.jpg" alt="Кофе" loading="lazy"></figure>
+          <figure class="fade-in"><img src="img/bottles.jpg" alt="Средства для ухода" loading="lazy"></figure>
+          <figure class="fade-in"><img src="img/brushes.jpg" alt="Профессиональные кисти" loading="lazy"></figure>
+          <figure class="fade-in"><img src="img/interior.jpg" alt="Рабочее место" loading="lazy"></figure>
+        </div>
+      </div>
+
+      <div id="works-tab" style="display:none">
+        <div class="works-carousel">
+          <div class="works-slider" id="works-slider">
+            <div class="work-card"><img src="img/card.jpg" alt="Работа мастера 1" loading="lazy"></div>
+            <div class="work-card"><img src="img/peonies.jpg" alt="Работа мастера 2" loading="lazy"></div>
+            <div class="work-card"><img src="img/coffee.jpg" alt="Работа мастера 3" loading="lazy"></div>
+            <div class="work-card"><img src="img/bottles.jpg" alt="Работа мастера 4" loading="lazy"></div>
+            <div class="work-card"><img src="img/brushes.jpg" alt="Работа мастера 5" loading="lazy"></div>
+            <div class="work-card"><img src="img/interior.jpg" alt="Работа мастера 6" loading="lazy"></div>
+          </div>
+        </div>
+        <p style="font-size:14px;color:var(--mute);margin-top:24px">Скролльте вправо, чтобы увидеть больше работ</p>
       </div>
     </div>
   </section>
 
   <section>
     <div class="wrap">
-      <div class="promo">
+      <div class="promo fade-in">
         <h2>Дарим 1 000 ₽<br>каждой новой клиентке</h2>
         <p>Действует до конца октября. Скидка из поста во ВКонтакте. Условия уточняйте при записи — не суммируется с другими акциями.</p>
         <a class="btn" href="https://vk.ru/app5688600_-53576028" target="_blank" rel="noopener">Записаться со скидкой →</a>
@@ -274,8 +318,8 @@
 
   <section class="contacts" id="contacts">
     <div class="wrap">
-      <h2>Где нас найти</h2>
-      <div class="contact-grid">
+      <h2 class="fade-in">Где нас найти</h2>
+      <div class="contact-grid fade-in">
         <div class="contact-card">
           <div class="label">Адрес</div>
           <div class="big">Петрозаводск,<br>ул. Энтузиастов, 9к1</div>
@@ -375,6 +419,28 @@
 
   function renderAll() { renderTabs(); renderList(); renderSum(); }
   renderAll();
+
+  // Анимации при прокрутке
+  const fadeObserver = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add("in");
+        fadeObserver.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll(".fade-in").forEach(el => fadeObserver.observe(el));
+
+  // Переключение табов галереи
+  const galleryTabs = document.querySelectorAll(".gallery-tab");
+  galleryTabs.forEach(tab => {
+    tab.addEventListener("click", () => {
+      galleryTabs.forEach(t => t.classList.remove("on"));
+      tab.classList.add("on");
+      document.getElementById("studio-tab").style.display = tab.dataset.tab === "studio" ? "block" : "none";
+      document.getElementById("works-tab").style.display = tab.dataset.tab === "works" ? "block" : "none";
+    });
+  });
 </script>
 </body>
 </html>
