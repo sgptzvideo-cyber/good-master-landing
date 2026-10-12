@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>GOOD MASTER — студия красоты, Петрозаводск</title>
+<meta name="description" content="Перманентный макияж, ресницы, маникюр и педикюр в Петрозаводске. Запись онлайн.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@400;500;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #f6efe9; --paper-2: #efe4dc; --card: #fffaf7; --ink: #2a1d1f; --muted: #7d6a6c;
+    --wine: #7f1d33; --wine-soft: #f1dfe3; --gold: #b8925a; --line: #e4d6cd;
+    --serif: "Bodoni Moda", Didot, Georgia, serif; --sans: "Manrope", -apple-system, "Segoe UI", Roboto, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: var(--paper); color: var(--ink); font: 16px/1.6 var(--sans); }
+  a { color: inherit; }
+  .wrap { max-width: 1040px; margin: 0 auto; padding: 0 20px; }
+
+  /* Шапка */
+  header { position: sticky; top: 0; z-index: 10; background: rgba(246,239,233,.94); backdrop-filter: blur(6px); border-bottom: 1px solid var(--line); }
+  header .wrap { display: flex; align-items: center; justify-content: space-between; height: 64px; }
+  .brand { font-family: var(--serif); font-weight: 700; font-size: 20px; letter-spacing: .08em; text-decoration: none; }
+  .brand span { color: var(--wine); }
+  nav { display: flex; gap: 20px; font-size: 14px; }
+  nav a { text-decoration: none; color: var(--muted); }
+  nav a:hover { color: var(--ink); }
+  .btn {
+    display: inline-block; background: var(--wine); color: #fff; text-decoration: none; font-weight: 600;
+    padding: 13px 22px; border-radius: 999px; transition: transform .15s, opacity .2s;
+  }
+  .btn:hover { opacity: .92; }
+  .btn:active { transform: scale(.98); }
+  .btn.ghost { background: transparent; color: var(--wine); border: 1px solid var(--wine); }
+  @media (max-width: 720px) { nav a:not(.btn) { display: none; } }
+
+  /* Первый экран */
+  .hero { padding: 72px 0 56px; }
+  .hero .eyebrow { font-size: 12px; letter-spacing: .3em; text-transform: uppercase; color: var(--gold); }
+  .hero h1 { font-family: var(--serif); font-weight: 500; font-size: clamp(40px, 7vw, 72px); line-height: 1.05; margin: 14px 0 18px; }
+  .hero h1 em { font-style: normal; color: var(--wine); }
+  .hero p { font-size: 18px; color: var(--muted); max-width: 520px; margin: 0 0 28px; }
+  .hero .actions { display: flex; gap: 12px; flex-wrap: wrap; }
+  .facts { display: flex; gap: 28px; flex-wrap: wrap; margin-top: 36px; font-size: 14px; color: var(--muted); }
+  .facts b { display: block; font-family: var(--serif); font-size: 26px; color: var(--ink); font-weight: 500; }
+
+  section { padding: 56px 0; border-top: 1px solid var(--line); }
+  .kicker { font-size: 12px; letter-spacing: .26em; text-transform: uppercase; color: var(--gold); }
+  h2 { font-family: var(--serif); font-weight: 500; font-size: clamp(30px, 4.5vw, 44px); margin: 10px 0 20px; line-height: 1.1; }
+
+  /* Услуги */
+  .prices { display: grid; gap: 14px; grid-template-columns: 1fr; }
+  @media (min-width: 720px) { .prices { grid-template-columns: 1fr 1fr; } }
+  .price-card { background: var(--card); border: 1px solid var(--line); border-radius: 20px; padding: 22px; }
+  .price-card h3 { font-family: var(--serif); font-weight: 500; font-size: 24px; margin: 0 0 10px; }
+  .price-card ul { list-style: none; padding: 0; margin: 0; }
+  .price-card li { display: flex; justify-content: space-between; gap: 12px; padding: 8px 0; border-bottom: 1px dotted var(--line); font-size: 15px; }
+  .price-card li:last-child { border-bottom: 0; }
+  .price-card li b { white-space: nowrap; }
+
+  /* Мастера */
+  .masters { display: grid; gap: 14px; grid-template-columns: 1fr; }
+  @media (min-width: 720px) { .masters { grid-template-columns: repeat(3, 1fr); } }
+  .master { background: var(--card); border: 1px solid var(--line); border-radius: 20px; overflow: hidden; }
+  .master .ph {
+    aspect-ratio: 4 / 5; background: linear-gradient(160deg, var(--wine-soft), var(--paper-2));
+    display: grid; place-items: center; color: var(--muted); font-size: 13px; text-align: center; padding: 16px;
+  }
+  .master .info { padding: 18px; }
+  .master h3 { font-family: var(--serif); font-weight: 500; font-size: 22px; margin: 0 0 4px; }
+  .master p { margin: 0; font-size: 14px; color: var(--muted); }
+
+  /* Акция */
+  .promo {
+    background: var(--ink); color: var(--paper); border-radius: 24px; padding: 36px 28px;
+    display: grid; gap: 14px;
+  }
+  .promo .kicker { color: var(--gold); }
+  .promo h2 { color: var(--paper); margin: 0; }
+  .promo p { margin: 0; color: #d9cbc6; max-width: 560px; }
+  .promo small { color: #b8a8a4; font-size: 13px; }
+
+  /* Отзыв */
+  .quote { font-family: var(--serif); font-size: clamp(22px, 3vw, 30px); line-height: 1.35; margin: 0; max-width: 780px; }
+  .quote-by { margin-top: 12px; font-size: 14px; color: var(--muted); }
+
+  /* Контакты */
+  .contacts { display: grid; gap: 14px; grid-template-columns: 1fr; }
+  @media (min-width: 720px) { .contacts { grid-template-columns: 1fr 1fr; } }
+  .contact-card { background: var(--card); border: 1px solid var(--line); border-radius: 20px; padding: 24px; }
+  .contact-card b { display: block; font-size: 13px; color: var(--muted); font-weight: 500; letter-spacing: .08em; text-transform: uppercase; margin-bottom: 6px; }
+  .contact-card a { text-decoration: none; font-size: 18px; }
+
+  footer { padding: 36px 0 48px; border-top: 1px solid var(--line); font-size: 13px; color: var(--muted); }
+  footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <a class="brand" href="#top">GOOD <span>MASTER</span></a>
+    <nav>
+      <a href="#services">Услуги</a>
+      <a href="#masters">Мастера</a>
+      <a href="#contacts">Контакты</a>
+      <a class="btn" href="https://vk.ru/app5688600_-53576028" target="_blank" rel="noopener">Записаться</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <div class="wrap hero">
+    <div class="eyebrow">Петрозаводск · ул. Энтузиастов, 9к1</div>
+    <h1>Красота, <em>которой</em><br>доверяют</h1>
+    <p>Перманентный макияж, ресницы, маникюр и педикюр. Мастер подбирает форму и цвет под вас и согласует каждый этап.</p>
+    <div class="actions">
+      <a class="btn" href="https://vk.ru/app5688600_-53576028" target="_blank" rel="noopener">Записаться онлайн</a>
+      <a class="btn ghost" href="tel:+79114155005">Позвонить</a>
+    </div>
+    <div class="facts">
+      <div><b>12</b>услуг в прайсе</div>
+      <div><b>5,0</b>рейтинг в ВКонтакте</div>
+      <div><b>Ежедневно</b>по предварительной записи</div>
+    </div>
+  </div>
+
+  <section id="services">
+    <div class="wrap">
+      <div class="kicker">Услуги и цены</div>
+      <h2>Прайс студии</h2>
+      <div class="prices">
+        <div class="price-card">
+          <h3>Брови и ресницы</h3>
+          <ul>
+            <li><span>Перманентный макияж</span><b>7 000 ₽</b></li>
+            <li><span>Долговременная укладка бровей</span><b>2 100 ₽</b></li>
+            <li><span>Окрашивание бровей (краска / хна)</span><b>от 1 600 ₽</b></li>
+            <li><span>Наращивание ресниц</span><b>от 1 600 ₽</b></li>
+            <li><span>Ламинирование ресниц</span><b>2 100 ₽</b></li>
+            <li><span>Комплекс бровей и ресниц</span><b>3 900 ₽</b></li>
+          </ul>
+        </div>
+        <div class="price-card">
+          <h3>Ногти и ножки</h3>
+          <ul>
+            <li><span>Маникюр без покрытия</span><b>от 1 100 ₽</b></li>
+            <li><span>Маникюр + френч</span><b>от 2 800 ₽</b></li>
+            <li><span>Гель-лак однотон</span><b>от 2 200 ₽</b></li>
+            <li><span>Японский SPA-маникюр</span><b>2 200 ₽</b></li>
+            <li><span>Педикюр SMART</span><b>от 2 000 ₽</b></li>
+            <li><span>Педикюр + плёнки</span><b>2 700–3 500 ₽</b></li>
+          </ul>
+        </div>
+      </div>
+      <p style="font-size:13px;color:var(--muted);margin-top:16px">Цены по данным группы ВКонтакте на 12.10.2026. Точная стоимость зависит от мастера и объёма, её подтверждает администратор.</p>
+    </div>
+  </section>
+
+  <section id="masters">
+    <div class="wrap">
+      <div class="kicker">Мастера</div>
+      <h2>Выбирайте своего мастера</h2>
+      <div class="masters">
+        <article class="master">
+          <div class="ph">Фото мастера</div>
+          <div class="info">
+            <h3>Мария</h3>
+            <p>Мастер перманентного макияжа и бровист. Подбирает форму и цвет индивидуально и согласует каждый этап с клиенткой.</p>
+          </div>
+        </article>
+        <article class="master">
+          <div class="ph">Фото мастера</div>
+          <div class="info">
+            <h3>Надежда Артемьева</h3>
+            <p>Мастер маникюра, работает 4 года. Делает аккуратные покрытия гель-лаком.</p>
+          </div>
+        </article>
+        <article class="master">
+          <div class="ph">Фото мастера</div>
+          <div class="info">
+            <h3>Анна</h3>
+            <p>Мастер маникюра. Одна из клиенток во ВКонтакте отметила аккуратную работу и внимание.</p>
+          </div>
+        </article>
+      </div>
+      <p style="font-size:13px;color:var(--muted);margin-top:16px">Фото мастеров и работ добавит студия. Здесь заглушки.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="promo">
+        <div class="kicker">Акция</div>
+        <h2>Дарим 1 000 ₽ каждой</h2>
+        <p>Скидка из поста студии во ВКонтакте. Условия и срок уточняйте при записи.</p>
+        <small>Не суммируется с другими акциями.</small>
+        <div><a class="btn" href="https://vk.ru/app5688600_-53576028" target="_blank" rel="noopener">Записаться</a></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="kicker">Отзыв</div>
+      <p class="quote">Клиентка благодарит мастера маникюра за аккуратную работу, вежливость и внимание к клиенту.</p>
+      <p class="quote-by">Отзыв во ВКонтакте, июль 2026. Имя клиентки не указываем.</p>
+    </div>
+  </section>
+
+  <section id="contacts">
+    <div class="wrap">
+      <div class="kicker">Контакты</div>
+      <h2>Приходите</h2>
+      <div class="contacts">
+        <div class="contact-card">
+          <b>Адрес</b>
+          <div style="font-size:18px">Петрозаводск, ул. Энтузиастов, 9к1</div>
+          <div style="font-size:14px;color:var(--muted);margin-top:6px">ЖК «Белые Ночи». Режим работы уточняйте: по данным 2ГИС, ежедневно с 10:00 до 21:00.</div>
+        </div>
+        <div class="contact-card">
+          <b>Записаться</b>
+          <a href="tel:+79114155005">+7 (911) 415-50-05</a>
+          <div style="margin-top:12px"><a class="btn" href="https://vk.ru/app5688600_-53576028" target="_blank" rel="noopener">Онлайн-запись</a></div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>GOOD MASTER · Петрозаводск</span>
+    <span>Пример лендинга. Тексты и цены из открытых источников, фото заглушки.</span>
+  </div>
+</footer>
+
+</body>
+</html>
