@@ -10,67 +10,75 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;0,6..96,700;1,6..96,400&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
+  /* Палитра снята с фото из группы: графит и чёрный (визитки, перчатки, одежда команды),
+     светло-серый фон студии, тёплый беж светлого дерева, серо-голубой фартуков. */
   :root {
+    --bg: #f1f0ee;
     --white: #ffffff;
-    --paper: #f7f6f4;
-    --ink: #151515;
-    --ink-2: #3d3b39;
-    --mute: #8a8580;
-    --line: #e6e3de;
+    --ink: #141414;
+    --graphite: #3c3c3c;
+    --mute: #7a7773;
+    --line: #dcd9d4;
+    --wood: #b49c84;
+    --slate: #7f8fa1;
+    --blush: #e7c9cf;
     --serif: "Bodoni Moda", Didot, "Times New Roman", serif;
     --sans: "Figtree", -apple-system, "Segoe UI", Roboto, sans-serif;
   }
   * { box-sizing: border-box; }
   html { scroll-behavior: smooth; }
-  body { margin: 0; background: var(--white); color: var(--ink); font: 16px/1.6 var(--sans); }
+  body { margin: 0; background: var(--bg); color: var(--ink); font: 16px/1.6 var(--sans); }
   a { color: inherit; }
+  img { display: block; max-width: 100%; }
   .wrap { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
 
-  /* Шапка */
-  header { position: sticky; top: 0; z-index: 20; background: rgba(255,255,255,.92); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); }
+  header { position: sticky; top: 0; z-index: 20; background: rgba(241,240,238,.92); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); }
   header .wrap { display: flex; align-items: center; justify-content: space-between; height: 68px; }
   .brand { font-family: var(--serif); font-weight: 700; font-size: 19px; letter-spacing: .22em; text-decoration: none; }
   nav { display: flex; align-items: center; gap: 28px; font-size: 14px; }
-  nav a { text-decoration: none; color: var(--ink-2); }
+  nav a { text-decoration: none; color: var(--graphite); }
   nav a:hover { text-decoration: underline; text-underline-offset: 6px; }
   .btn {
     display: inline-flex; align-items: center; gap: 10px; text-decoration: none; font-weight: 600; font-size: 15px;
     padding: 14px 24px; border-radius: 999px; background: var(--ink); color: var(--white); border: 1px solid var(--ink);
     transition: background .25s, color .25s, transform .2s;
   }
-  .btn:hover { background: var(--white); color: var(--ink); transform: translateY(-1px); }
+  .btn:hover { background: transparent; color: var(--ink); transform: translateY(-1px); }
   .btn.ghost { background: transparent; color: var(--ink); }
   .btn.ghost:hover { background: var(--ink); color: var(--white); }
   @media (max-width: 760px) { nav a:not(.btn) { display: none; } }
 
-  /* Первый экран: большая редакционная типографика */
-  .hero { padding: 80px 0 72px; border-bottom: 1px solid var(--line); }
-  .hero .eyebrow { font-size: 12px; letter-spacing: .3em; text-transform: uppercase; color: var(--mute); }
+  /* Первый экран */
+  .hero { padding: 56px 0 72px; }
+  .hero .grid { display: grid; gap: 40px; grid-template-columns: 1fr; align-items: center; }
+  @media (min-width: 940px) { .hero .grid { grid-template-columns: 1fr 1.05fr; gap: 56px; } }
+  .eyebrow { font-size: 12px; letter-spacing: .3em; text-transform: uppercase; color: var(--slate); }
   .hero h1 {
-    font-family: var(--serif); font-weight: 400; font-size: clamp(56px, 11vw, 150px); line-height: .92;
-    letter-spacing: -.01em; margin: 22px 0 28px;
+    font-family: var(--serif); font-weight: 400; font-size: clamp(60px, 9.5vw, 128px); line-height: .92;
+    letter-spacing: -.01em; margin: 20px 0 24px;
   }
-  .hero h1 i { font-weight: 400; }
-  .hero h1 .word { display: inline-block; opacity: 0; transform: translateY(40px); animation: up .9s cubic-bezier(.2,.8,.2,1) forwards; }
-  .hero h1 .word:nth-child(2) { animation-delay: .12s; }
-  .hero h1 .word:nth-child(3) { animation-delay: .24s; }
+  .hero h1 .word { display: block; opacity: 0; transform: translateY(40px); animation: up .9s cubic-bezier(.2,.8,.2,1) forwards; }
+  .hero h1 .word:nth-child(2) { animation-delay: .14s; font-style: italic; }
   @keyframes up { to { opacity: 1; transform: none; } }
-  .hero .row { display: grid; gap: 28px; align-items: end; grid-template-columns: 1fr; }
-  @media (min-width: 900px) { .hero .row { grid-template-columns: 1.1fr .9fr; } }
-  .hero p.lead { font-size: 19px; color: var(--ink-2); max-width: 480px; margin: 0; }
-  .hero .actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 26px; }
-  .hero .facts { display: flex; gap: 36px; flex-wrap: wrap; font-size: 13px; color: var(--mute); }
-  .hero .facts b { display: block; font-family: var(--serif); font-size: 34px; font-weight: 400; color: var(--ink); line-height: 1.1; }
+  .lead { font-size: 19px; color: var(--graphite); max-width: 460px; margin: 0; }
+  .actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 28px; }
+  .facts { display: flex; gap: 34px; flex-wrap: wrap; margin-top: 40px; font-size: 13px; color: var(--mute); }
+  .facts b { display: block; font-family: var(--serif); font-size: 34px; font-weight: 400; color: var(--ink); line-height: 1.1; }
+  .team {
+    aspect-ratio: 3 / 2; border-radius: 4px; overflow: hidden; background: #e6e4e0; position: relative;
+    display: grid; place-items: center; color: var(--mute); font-size: 12px; letter-spacing: .2em; text-transform: uppercase;
+  }
+  .team img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
 
   /* Бегущая строка */
   .ticker { background: var(--ink); color: var(--white); overflow: hidden; white-space: nowrap; padding: 16px 0; }
-  .ticker .track { display: inline-block; animation: slide 40s linear infinite; font-family: var(--serif); font-style: italic; font-size: 24px; }
+  .ticker .track { display: inline-block; animation: slide 42s linear infinite; font-family: var(--serif); font-style: italic; font-size: 24px; }
   .ticker .track span { margin: 0 28px; }
-  .ticker .track i { font-style: normal; opacity: .5; }
+  .ticker .track i { font-style: normal; color: var(--wood); }
   @keyframes slide { to { transform: translateX(-50%); } }
 
   section { padding: 110px 0; }
-  .kicker { font-size: 12px; letter-spacing: .28em; text-transform: uppercase; color: var(--mute); }
+  .kicker { font-size: 12px; letter-spacing: .28em; text-transform: uppercase; color: var(--slate); }
   h2 { font-family: var(--serif); font-weight: 400; font-size: clamp(42px, 6.5vw, 84px); line-height: .98; margin: 16px 0 26px; letter-spacing: -.01em; }
   h2 i { font-style: italic; }
   .reveal { opacity: 0; transform: translateY(24px); transition: opacity .9s ease, transform .9s cubic-bezier(.2,.8,.2,1); }
@@ -80,10 +88,7 @@
   .picker { display: grid; gap: 48px; grid-template-columns: 1fr; }
   @media (min-width: 960px) { .picker { grid-template-columns: 1.15fr .85fr; align-items: start; } }
   .tabs { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 18px; }
-  .tab {
-    background: var(--white); color: var(--ink); border: 1px solid var(--line); border-radius: 999px;
-    padding: 9px 18px; font: 500 14px var(--sans); cursor: pointer; transition: all .25s;
-  }
+  .tab { background: var(--white); color: var(--ink); border: 1px solid var(--line); border-radius: 999px; padding: 9px 18px; font: 500 14px var(--sans); cursor: pointer; transition: all .25s; }
   .tab:hover { border-color: var(--ink); }
   .tab.on { background: var(--ink); color: var(--white); border-color: var(--ink); }
   .svc-list { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line); }
@@ -92,7 +97,7 @@
     padding: 20px 4px; border-bottom: 1px solid var(--line); cursor: pointer; transition: padding .25s, background .25s;
     animation: fadein .4s ease both;
   }
-  .svc-list li:hover { padding-left: 12px; background: var(--paper); }
+  .svc-list li:hover { padding-left: 12px; background: rgba(255,255,255,.6); }
   .svc-list .box { width: 22px; height: 22px; border: 1.5px solid var(--ink); border-radius: 50%; position: relative; transition: background .25s; }
   .svc-list li.on .box { background: var(--ink); }
   .svc-list li.on .box::after {
@@ -104,50 +109,49 @@
   .svc-list .price { font-family: var(--serif); font-size: 24px; white-space: nowrap; }
   @keyframes fadein { from { opacity: 0; } to { opacity: 1; } }
 
-  .sum {
-    position: sticky; top: 100px; padding: 36px; border-radius: 6px; background: var(--paper); border: 1px solid var(--line);
-  }
+  .sum { position: sticky; top: 100px; padding: 36px; border-radius: 4px; background: var(--white); border: 1px solid var(--line); }
   .sum .label { font-size: 12px; letter-spacing: .24em; text-transform: uppercase; color: var(--mute); }
   .sum .total { font-family: var(--serif); font-size: clamp(60px, 7vw, 92px); line-height: 1; margin: 14px 0 8px; }
   .sum .count { color: var(--mute); font-size: 14px; min-height: 1.4em; }
   .sum .btn { width: 100%; justify-content: center; margin-top: 28px; }
   .sum .hint { font-size: 13px; color: var(--mute); margin-top: 14px; }
 
+  /* Атмосфера */
+  .mosaic { display: grid; gap: 12px; grid-template-columns: repeat(2, 1fr); margin-top: 36px; }
+  @media (min-width: 760px) { .mosaic { grid-template-columns: repeat(3, 1fr); } }
+  @media (min-width: 1000px) { .mosaic { grid-template-columns: repeat(6, 1fr); } }
+  .mosaic figure { margin: 0; aspect-ratio: 3 / 4; overflow: hidden; background: #e6e4e0; }
+  .mosaic img { width: 100%; height: 100%; object-fit: cover; transition: transform .7s cubic-bezier(.2,.8,.2,1); }
+  .mosaic figure:hover img { transform: scale(1.06); }
+
+  .salon { margin-top: 36px; border-radius: 4px; overflow: hidden; background: #e6e4e0; max-height: 640px; }
+  .salon img { width: 100%; height: 640px; object-fit: cover; object-position: center 40%; }
+  @media (max-width: 760px) { .salon img { height: 420px; } }
+
   /* Мастера */
-  .masters { display: grid; gap: 22px; grid-template-columns: 1fr; margin-top: 48px; }
+  .masters { display: grid; gap: 0; grid-template-columns: 1fr; margin-top: 40px; border-top: 1px solid var(--line); }
   @media (min-width: 820px) { .masters { grid-template-columns: repeat(3, 1fr); } }
-  .master { background: var(--white); }
-  .master .ph {
-    aspect-ratio: 4 / 5; background: var(--paper); border: 1px solid var(--line); position: relative; overflow: hidden;
-    transition: transform .6s cubic-bezier(.2,.8,.2,1);
-  }
-  .master:hover .ph { transform: scale(1.015); }
-  .master .ph::after {
-    content: "фото мастера"; position: absolute; inset: 0; display: grid; place-items: center;
-    font-size: 12px; letter-spacing: .18em; text-transform: uppercase; color: var(--mute);
-  }
-  .master h3 { font-family: var(--serif); font-weight: 400; font-size: 30px; margin: 18px 0 2px; }
-  .master .role { font-size: 13px; color: var(--mute); letter-spacing: .04em; }
-  .master p { font-size: 15px; color: var(--ink-2); margin: 10px 0 0; }
+  .master { padding: 28px 24px 32px 0; border-bottom: 1px solid var(--line); }
+  @media (min-width: 820px) { .master { border-bottom: 0; border-right: 1px solid var(--line); padding-left: 24px; } .master:first-child { padding-left: 0; } .master:last-child { border-right: 0; } }
+  .master h3 { font-family: var(--serif); font-weight: 400; font-size: 32px; margin: 0 0 4px; }
+  .master .role { font-size: 13px; color: var(--slate); letter-spacing: .06em; text-transform: uppercase; }
+  .master p { font-size: 15px; color: var(--graphite); margin: 12px 0 0; }
 
   /* Акция */
-  .promo { background: var(--ink); color: var(--white); padding: 72px 40px; border-radius: 6px; display: grid; gap: 22px; }
-  .promo .kicker { color: #bdb8b2; }
+  .promo { background: var(--ink); color: var(--white); padding: 72px 40px; border-radius: 4px; display: grid; gap: 22px; }
+  .promo .kicker { color: var(--wood); }
   .promo h2 { color: var(--white); margin: 0; }
-  .promo h2 i { color: #d8d3cc; }
-  .promo p { margin: 0; color: #d8d3cc; max-width: 560px; }
+  .promo p { margin: 0; color: #d4d0ca; max-width: 560px; }
   .promo .btn { background: var(--white); color: var(--ink); border-color: var(--white); justify-self: start; }
   .promo .btn:hover { background: transparent; color: var(--white); }
-  .promo small { color: #9f9994; font-size: 13px; }
+  .promo small { color: #9d9993; font-size: 13px; }
 
-  /* Отзыв */
   .quote { font-family: var(--serif); font-style: italic; font-size: clamp(30px, 4.4vw, 52px); line-height: 1.2; max-width: 960px; margin: 22px 0 0; }
   .quote-by { margin-top: 18px; font-size: 14px; color: var(--mute); }
 
-  /* Контакты */
   .contacts { display: grid; gap: 22px; grid-template-columns: 1fr; margin-top: 48px; }
   @media (min-width: 820px) { .contacts { grid-template-columns: 1.2fr 1fr; } }
-  .card { padding: 36px; border: 1px solid var(--line); border-radius: 6px; }
+  .card { padding: 36px; border: 1px solid var(--line); background: var(--white); border-radius: 4px; }
   .card .label { font-size: 12px; letter-spacing: .22em; text-transform: uppercase; color: var(--mute); margin-bottom: 12px; }
   .card .big { font-family: var(--serif); font-size: 32px; line-height: 1.2; }
   .card .note { font-size: 14px; color: var(--mute); margin-top: 12px; }
@@ -156,7 +160,6 @@
   footer { padding: 40px 0 56px; border-top: 1px solid var(--line); font-size: 13px; color: var(--mute); }
   footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
 
-  /* Мобильная панель записи */
   .dock {
     position: fixed; left: 12px; right: 12px; bottom: 12px; z-index: 15; display: none;
     background: var(--white); border: 1px solid var(--line); border-radius: 16px; padding: 12px 14px;
@@ -189,23 +192,25 @@
 </header>
 
 <main id="top">
-  <section class="hero" style="padding-top:64px;padding-bottom:64px">
-    <div class="wrap">
-      <div class="eyebrow">Петрозаводск · ул. Энтузиастов, 9к1</div>
-      <h1><span class="word">Good</span> <span class="word"><i>Master</i></span></h1>
-      <div class="row">
-        <div>
-          <p class="lead">Перманентный макияж, ресницы, маникюр и педикюр. Мастер подбирает форму и цвет под вас и согласует каждый этап.</p>
-          <div class="actions">
-            <a class="btn" href="https://vk.ru/app5688600_-53576028" target="_blank" rel="noopener">Записаться онлайн →</a>
-            <a class="btn ghost" href="#services">Цены и услуги</a>
-          </div>
+  <section class="hero">
+    <div class="wrap grid">
+      <div>
+        <div class="eyebrow">Петрозаводск · ул. Энтузиастов, 9к1</div>
+        <h1><span class="word">Good</span><span class="word">Master</span></h1>
+        <p class="lead">Перманентный макияж, ресницы, маникюр и педикюр. Мастер подбирает форму и цвет под вас и согласует каждый этап.</p>
+        <div class="actions">
+          <a class="btn" href="https://vk.ru/app5688600_-53576028" target="_blank" rel="noopener">Записаться онлайн →</a>
+          <a class="btn ghost" href="#services">Цены и услуги</a>
         </div>
-        <div class="facts" style="justify-content:flex-end">
+        <div class="facts">
           <div><b>12</b>услуг в прайсе</div>
           <div><b>5,0</b>рейтинг во ВКонтакте</div>
           <div><b>Ежедневно</b>по предварительной записи</div>
         </div>
+      </div>
+      <div class="team">
+        <span>фото команды</span>
+        <img src="img/team.jpg" alt="Команда студии GOOD MASTER" onerror="this.remove()">
       </div>
     </div>
   </section>
@@ -226,13 +231,29 @@
         <ul class="svc-list" id="list"></ul>
         <p style="font-size:13px;color:var(--mute);margin-top:18px">Цены из группы ВКонтакте на 12.10.2026. Точная стоимость зависит от мастера и объёма, её подтверждает администратор.</p>
       </div>
-      <aside class="sum reveal" id="sum">
+      <aside class="sum reveal">
         <div class="label">Примерно</div>
         <div class="total" id="total">0 ₽</div>
         <div class="count" id="count">Отметьте услуги слева</div>
-        <a class="btn" id="book" href="https://vk.ru/app5688600_-53576028" target="_blank" rel="noopener">Записаться с этим набором →</a>
+        <a class="btn" href="https://vk.ru/app5688600_-53576028" target="_blank" rel="noopener">Записаться с этим набором →</a>
         <div class="hint">Откроется онлайн-запись. Выбранные услуги и сумма остаются на экране для сверки.</div>
       </aside>
+    </div>
+  </section>
+
+  <section style="padding-top:0">
+    <div class="wrap">
+      <div class="kicker reveal">Атмосфера</div>
+      <h2 class="reveal">Студия <i>изнутри</i></h2>
+      <div class="salon reveal"><img src="img/salon.jpg" alt="Рабочие места маникюра в студии GOOD MASTER" loading="lazy" onerror="this.parentElement.remove()"></div>
+      <div class="mosaic reveal">
+        <figure><img src="img/card.jpg" alt="Визитка GOOD MASTER" loading="lazy"></figure>
+        <figure><img src="img/peonies.jpg" alt="Пионы и конверт с логотипом" loading="lazy"></figure>
+        <figure><img src="img/coffee.jpg" alt="Кофе на столике" loading="lazy"></figure>
+        <figure><img src="img/bottles.jpg" alt="Флаконы с сыворотками" loading="lazy"></figure>
+        <figure><img src="img/brushes.jpg" alt="Кисточки для ресниц" loading="lazy"></figure>
+        <figure><img src="img/interior.jpg" alt="Интерьер студии" loading="lazy"></figure>
+      </div>
     </div>
   </section>
 
@@ -240,21 +261,18 @@
     <div class="wrap">
       <div class="kicker reveal">Мастера</div>
       <h2 class="reveal">Выберите <i>своего</i> мастера</h2>
-      <div class="masters">
-        <article class="master reveal">
-          <div class="ph"></div>
+      <div class="masters reveal">
+        <article class="master">
           <h3>Мария</h3>
           <div class="role">Перманентный макияж · бровист</div>
           <p>Подбирает форму и цвет индивидуально и согласует каждый этап с клиенткой.</p>
         </article>
-        <article class="master reveal">
-          <div class="ph"></div>
+        <article class="master">
           <h3>Надежда Артемьева</h3>
           <div class="role">Маникюр · 4 года опыта</div>
           <p>Аккуратный маникюр и тонкое, крепкое покрытие гель-лаком.</p>
         </article>
-        <article class="master reveal">
-          <div class="ph"></div>
+        <article class="master">
           <h3>Анна</h3>
           <div class="role">Маникюр</div>
           <p>Одна из клиенток во ВКонтакте отметила аккуратную работу и внимание.</p>
@@ -306,7 +324,7 @@
 <footer>
   <div class="wrap">
     <span>GOOD MASTER · Петрозаводск</span>
-    <span>Пример лендинга. Тексты и цены из открытых источников, фото мастеров — заглушки.</span>
+    <span>Пример лендинга. Тексты, цены и фото из открытых материалов студии во ВКонтакте.</span>
   </div>
 </footer>
 
