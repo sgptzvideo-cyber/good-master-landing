@@ -124,9 +124,12 @@
   .mosaic img { width: 100%; height: 100%; object-fit: cover; transition: transform .7s cubic-bezier(.2,.8,.2,1); }
   .mosaic figure:hover img { transform: scale(1.06); }
 
-  .salon { margin-top: 36px; border-radius: 4px; overflow: hidden; background: #e6e4e0; max-height: 640px; }
-  .salon img { width: 100%; height: 640px; object-fit: cover; object-position: center 40%; }
-  @media (max-width: 760px) { .salon img { height: 420px; } }
+  .atmo { display: grid; gap: 12px; grid-template-columns: 1fr; margin-top: 36px; }
+  @media (min-width: 900px) { .atmo { grid-template-columns: 1fr 1.5fr; align-items: stretch; } }
+  .salon { border-radius: 4px; overflow: hidden; background: #e6e4e0; aspect-ratio: 2 / 3; }
+  .salon img { width: 100%; height: 100%; object-fit: cover; }
+  .atmo .mosaic { margin-top: 0; grid-template-columns: repeat(2, 1fr); align-content: start; }
+  @media (min-width: 560px) { .atmo .mosaic { grid-template-columns: repeat(3, 1fr); } }
 
   /* Мастера */
   .masters { display: grid; gap: 0; grid-template-columns: 1fr; margin-top: 40px; border-top: 1px solid var(--line); }
@@ -210,7 +213,7 @@
       </div>
       <div class="team">
         <span>фото команды</span>
-        <img src="img/team.jpg" alt="Команда студии GOOD MASTER" onerror="this.remove()">
+        <img src="img/team-web.jpg" alt="Команда студии GOOD MASTER" onerror="this.remove()">
       </div>
     </div>
   </section>
@@ -245,7 +248,8 @@
     <div class="wrap">
       <div class="kicker reveal">Атмосфера</div>
       <h2 class="reveal">Студия <i>изнутри</i></h2>
-      <div class="salon reveal"><img src="img/salon.jpg" alt="Рабочие места маникюра в студии GOOD MASTER" loading="lazy" onerror="this.parentElement.remove()"></div>
+      <div class="atmo">
+      <div class="salon reveal"><img src="img/salon-web.jpg" alt="Рабочие места маникюра в студии GOOD MASTER" loading="lazy" onerror="this.parentElement.remove()"></div>
       <div class="mosaic reveal">
         <figure><img src="img/card.jpg" alt="Визитка GOOD MASTER" loading="lazy"></figure>
         <figure><img src="img/peonies.jpg" alt="Пионы и конверт с логотипом" loading="lazy"></figure>
@@ -253,6 +257,7 @@
         <figure><img src="img/bottles.jpg" alt="Флаконы с сыворотками" loading="lazy"></figure>
         <figure><img src="img/brushes.jpg" alt="Кисточки для ресниц" loading="lazy"></figure>
         <figure><img src="img/interior.jpg" alt="Интерьер студии" loading="lazy"></figure>
+      </div>
       </div>
     </div>
   </section>
