@@ -8,103 +8,189 @@
 <meta name="description" content="Перманентный макияж, ресницы, маникюр и педикюр в Петрозаводске. Запись онлайн.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@400;500;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400;0,500;0,700;1,400&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root {
-    --paper: #f6efe9; --paper-2: #efe4dc; --card: #fffaf7; --ink: #2a1d1f; --muted: #7d6a6c;
-    --wine: #7f1d33; --wine-soft: #f1dfe3; --gold: #b8925a; --line: #e4d6cd;
-    --serif: "Bodoni Moda", Didot, Georgia, serif; --sans: "Manrope", -apple-system, "Segoe UI", Roboto, sans-serif;
+    --ink: #0d0b0b;
+    --ink-2: #181414;
+    --paper: #f4efe9;
+    --paper-dim: #a79d98;
+    --gold: #c9a46a;
+    --line: rgba(244, 239, 233, .14);
+    --serif: "Bodoni Moda", Didot, "Times New Roman", serif;
+    --sans: "Manrope", -apple-system, "Segoe UI", Roboto, sans-serif;
   }
   * { box-sizing: border-box; }
   html { scroll-behavior: smooth; }
-  body { margin: 0; background: var(--paper); color: var(--ink); font: 16px/1.6 var(--sans); }
+  body { margin: 0; background: var(--ink); color: var(--paper); font: 16px/1.6 var(--sans); overflow-x: hidden; }
   a { color: inherit; }
-  .wrap { max-width: 1040px; margin: 0 auto; padding: 0 20px; }
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 22px; }
 
   /* Шапка */
-  header { position: sticky; top: 0; z-index: 10; background: rgba(246,239,233,.94); backdrop-filter: blur(6px); border-bottom: 1px solid var(--line); }
-  header .wrap { display: flex; align-items: center; justify-content: space-between; height: 64px; }
-  .brand { font-family: var(--serif); font-weight: 700; font-size: 20px; letter-spacing: .08em; text-decoration: none; }
-  .brand span { color: var(--wine); }
-  nav { display: flex; gap: 20px; font-size: 14px; }
-  nav a { text-decoration: none; color: var(--muted); }
-  nav a:hover { color: var(--ink); }
-  .btn {
-    display: inline-block; background: var(--wine); color: #fff; text-decoration: none; font-weight: 600;
-    padding: 13px 22px; border-radius: 999px; transition: transform .15s, opacity .2s;
+  header {
+    position: fixed; inset: 0 0 auto 0; z-index: 20; transition: background .3s, backdrop-filter .3s;
   }
-  .btn:hover { opacity: .92; }
-  .btn:active { transform: scale(.98); }
-  .btn.ghost { background: transparent; color: var(--wine); border: 1px solid var(--wine); }
-  @media (max-width: 720px) { nav a:not(.btn) { display: none; } }
+  header.solid { background: rgba(13,11,11,.86); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
+  header .wrap { display: flex; align-items: center; justify-content: space-between; height: 72px; }
+  .brand { font-family: var(--serif); font-weight: 700; font-size: 18px; letter-spacing: .24em; text-decoration: none; }
+  nav { display: flex; align-items: center; gap: 26px; font-size: 14px; }
+  nav a { text-decoration: none; color: var(--paper-dim); transition: color .2s; }
+  nav a:hover { color: var(--paper); }
+  .btn {
+    display: inline-flex; align-items: center; gap: 10px; text-decoration: none; font-weight: 600; font-size: 15px;
+    padding: 14px 24px; border-radius: 999px; background: var(--gold); color: var(--ink);
+    transition: transform .2s, box-shadow .3s;
+  }
+  .btn:hover { transform: translateY(-2px); box-shadow: 0 14px 30px -12px rgba(201,164,106,.6); }
+  .btn.ghost { background: transparent; color: var(--paper); border: 1px solid var(--line); }
+  .btn.ghost:hover { box-shadow: none; border-color: var(--gold); }
+  @media (max-width: 760px) { nav a:not(.btn) { display: none; } }
 
   /* Первый экран */
-  .hero { padding: 72px 0 56px; }
-  .hero .eyebrow { font-size: 12px; letter-spacing: .3em; text-transform: uppercase; color: var(--gold); }
-  .hero h1 { font-family: var(--serif); font-weight: 500; font-size: clamp(40px, 7vw, 72px); line-height: 1.05; margin: 14px 0 18px; }
-  .hero h1 em { font-style: normal; color: var(--wine); }
-  .hero p { font-size: 18px; color: var(--muted); max-width: 520px; margin: 0 0 28px; }
-  .hero .actions { display: flex; gap: 12px; flex-wrap: wrap; }
-  .facts { display: flex; gap: 28px; flex-wrap: wrap; margin-top: 36px; font-size: 14px; color: var(--muted); }
-  .facts b { display: block; font-family: var(--serif); font-size: 26px; color: var(--ink); font-weight: 500; }
+  .hero {
+    min-height: 100vh; position: relative; display: flex; flex-direction: column; justify-content: center;
+    padding: 120px 0 64px; overflow: hidden;
+    background:
+      radial-gradient(900px 600px at 80% 20%, rgba(201,164,106,.14), transparent 60%),
+      radial-gradient(700px 500px at 10% 90%, rgba(244,239,233,.06), transparent 60%),
+      var(--ink);
+  }
+  .hero .eyebrow { font-size: 12px; letter-spacing: .34em; text-transform: uppercase; color: var(--gold); }
+  .mark {
+    font-family: var(--serif); font-weight: 500; font-size: clamp(64px, 16vw, 200px); line-height: .86;
+    margin: 18px 0 26px; letter-spacing: .02em; text-transform: uppercase;
+  }
+  .mark .row { display: block; overflow: hidden; }
+  .mark .row span { display: inline-block; transform: translateY(105%); animation: rise 1s cubic-bezier(.2,.8,.2,1) forwards; }
+  .mark .row:nth-child(2) span { animation-delay: .15s; font-style: normal; }
+  .mark .row:nth-child(2) { padding-left: 14vw; }
+  .mark em { color: var(--gold); font-style: italic; }
+  @keyframes rise { to { transform: translateY(0); } }
+  .hero p.lead { font-size: 18px; color: var(--paper-dim); max-width: 460px; margin: 0 0 32px; opacity: 0; animation: fade .9s .6s forwards; }
+  .hero .actions { display: flex; gap: 12px; flex-wrap: wrap; opacity: 0; animation: fade .9s .8s forwards; }
+  @keyframes fade { to { opacity: 1; } }
+  .hero .meta { position: absolute; right: 22px; bottom: 28px; font-size: 13px; color: var(--paper-dim); text-align: right; }
+  .hero .meta b { color: var(--paper); font-weight: 600; }
 
-  section { padding: 56px 0; border-top: 1px solid var(--line); }
-  .kicker { font-size: 12px; letter-spacing: .26em; text-transform: uppercase; color: var(--gold); }
-  h2 { font-family: var(--serif); font-weight: 500; font-size: clamp(30px, 4.5vw, 44px); margin: 10px 0 20px; line-height: 1.1; }
+  /* Бегущая строка */
+  .ticker { border-block: 1px solid var(--line); overflow: hidden; white-space: nowrap; padding: 18px 0; }
+  .ticker .track { display: inline-block; animation: slide 38s linear infinite; font-family: var(--serif); font-size: 26px; font-style: italic; color: var(--paper-dim); }
+  .ticker .track span { margin: 0 26px; }
+  .ticker .track i { color: var(--gold); font-style: normal; }
+  @keyframes slide { to { transform: translateX(-50%); } }
 
-  /* Услуги */
-  .prices { display: grid; gap: 14px; grid-template-columns: 1fr; }
-  @media (min-width: 720px) { .prices { grid-template-columns: 1fr 1fr; } }
-  .price-card { background: var(--card); border: 1px solid var(--line); border-radius: 20px; padding: 22px; }
-  .price-card h3 { font-family: var(--serif); font-weight: 500; font-size: 24px; margin: 0 0 10px; }
-  .price-card ul { list-style: none; padding: 0; margin: 0; }
-  .price-card li { display: flex; justify-content: space-between; gap: 12px; padding: 8px 0; border-bottom: 1px dotted var(--line); font-size: 15px; }
-  .price-card li:last-child { border-bottom: 0; }
-  .price-card li b { white-space: nowrap; }
+  section { padding: 110px 0; }
+  .kicker { font-size: 12px; letter-spacing: .3em; text-transform: uppercase; color: var(--gold); }
+  h2 { font-family: var(--serif); font-weight: 500; font-size: clamp(38px, 6vw, 72px); line-height: 1; margin: 14px 0 22px; }
+  h2 em { color: var(--gold); }
+  .reveal { opacity: 0; transform: translateY(28px); transition: opacity .9s ease, transform .9s cubic-bezier(.2,.8,.2,1); }
+  .reveal.in { opacity: 1; transform: none; }
+
+  /* Подбор услуг */
+  .picker { display: grid; gap: 40px; grid-template-columns: 1fr; }
+  @media (min-width: 900px) { .picker { grid-template-columns: 1fr 1fr; align-items: start; } }
+  .tabs { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 22px; }
+  .tab {
+    background: transparent; color: var(--paper-dim); border: 1px solid var(--line); border-radius: 999px;
+    padding: 10px 18px; font: 500 15px var(--sans); cursor: pointer; transition: all .25s;
+  }
+  .tab:hover { color: var(--paper); border-color: var(--paper-dim); }
+  .tab.on { background: var(--paper); color: var(--ink); border-color: var(--paper); }
+  .svc-list { list-style: none; margin: 0; padding: 0; }
+  .svc-list li {
+    display: grid; grid-template-columns: 26px 1fr auto; gap: 16px; align-items: center;
+    padding: 18px 4px; border-bottom: 1px solid var(--line); cursor: pointer; transition: background .25s, padding .25s;
+    animation: rise2 .5s ease both;
+  }
+  .svc-list li:hover { background: rgba(244,239,233,.03); padding-left: 12px; }
+  .svc-list .box { width: 22px; height: 22px; border: 1.5px solid var(--gold); border-radius: 50%; position: relative; transition: background .25s; }
+  .svc-list li.on .box { background: var(--gold); }
+  .svc-list li.on .box::after {
+    content: ""; position: absolute; left: 6px; top: 3px; width: 6px; height: 10px;
+    border-right: 2px solid var(--ink); border-bottom: 2px solid var(--ink); transform: rotate(45deg);
+  }
+  .svc-list .name { font-size: 17px; }
+  .svc-list .name small { display: block; color: var(--paper-dim); font-size: 13px; }
+  .svc-list .price { font-family: var(--serif); font-size: 22px; white-space: nowrap; }
+  @keyframes rise2 { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+
+  .sum-card {
+    position: sticky; top: 110px; padding: 32px; border-radius: 28px; background: var(--ink-2); border: 1px solid var(--line);
+  }
+  .sum-card .label { font-size: 13px; color: var(--paper-dim); letter-spacing: .14em; text-transform: uppercase; }
+  .sum-card .total { font-family: var(--serif); font-size: clamp(56px, 7vw, 84px); line-height: 1; margin: 12px 0 6px; color: var(--gold); }
+  .sum-card .count { color: var(--paper-dim); font-size: 14px; min-height: 1.4em; }
+  .sum-card .btn { width: 100%; justify-content: center; margin-top: 26px; }
+  .sum-card .hint { font-size: 13px; color: var(--paper-dim); margin-top: 14px; }
 
   /* Мастера */
-  .masters { display: grid; gap: 14px; grid-template-columns: 1fr; }
-  @media (min-width: 720px) { .masters { grid-template-columns: repeat(3, 1fr); } }
-  .master { background: var(--card); border: 1px solid var(--line); border-radius: 20px; overflow: hidden; }
+  .masters { display: grid; gap: 18px; grid-template-columns: 1fr; margin-top: 40px; }
+  @media (min-width: 800px) { .masters { grid-template-columns: repeat(3, 1fr); } }
+  .master { border-radius: 26px; overflow: hidden; background: var(--ink-2); border: 1px solid var(--line); transition: transform .4s cubic-bezier(.2,.8,.2,1); }
+  .master:hover { transform: translateY(-6px); }
   .master .ph {
-    aspect-ratio: 4 / 5; background: linear-gradient(160deg, var(--wine-soft), var(--paper-2));
-    display: grid; place-items: center; color: var(--muted); font-size: 13px; text-align: center; padding: 16px;
+    aspect-ratio: 4 / 5; position: relative; display: grid; place-items: center;
+    background: linear-gradient(170deg, #3a2e2c, #0d0b0b 70%);
   }
-  .master .info { padding: 18px; }
-  .master h3 { font-family: var(--serif); font-weight: 500; font-size: 22px; margin: 0 0 4px; }
-  .master p { margin: 0; font-size: 14px; color: var(--muted); }
+  .master .ph::after {
+    content: "фото мастера"; font-size: 13px; letter-spacing: .14em; text-transform: uppercase; color: var(--paper-dim);
+  }
+  .master .info { padding: 22px; }
+  .master h3 { font-family: var(--serif); font-weight: 500; font-size: 26px; margin: 0 0 4px; }
+  .master .role { font-size: 13px; color: var(--gold); letter-spacing: .08em; margin-bottom: 10px; }
+  .master p { margin: 0; font-size: 14px; color: var(--paper-dim); }
 
   /* Акция */
   .promo {
-    background: var(--ink); color: var(--paper); border-radius: 24px; padding: 36px 28px;
-    display: grid; gap: 14px;
+    border-radius: 32px; padding: 56px 36px; text-align: left; position: relative; overflow: hidden;
+    background: var(--gold); color: var(--ink);
   }
-  .promo .kicker { color: var(--gold); }
-  .promo h2 { color: var(--paper); margin: 0; }
-  .promo p { margin: 0; color: #d9cbc6; max-width: 560px; }
-  .promo small { color: #b8a8a4; font-size: 13px; }
+  .promo h2 { color: var(--ink); margin: 0 0 14px; }
+  .promo h2 em { color: var(--ink); font-style: italic; }
+  .promo p { margin: 0 0 24px; max-width: 560px; }
+  .promo .btn { background: var(--ink); color: var(--paper); }
+  .promo small { display: block; margin-top: 18px; opacity: .75; font-size: 13px; }
 
   /* Отзыв */
-  .quote { font-family: var(--serif); font-size: clamp(22px, 3vw, 30px); line-height: 1.35; margin: 0; max-width: 780px; }
-  .quote-by { margin-top: 12px; font-size: 14px; color: var(--muted); }
+  .quote { font-family: var(--serif); font-style: italic; font-size: clamp(28px, 4vw, 46px); line-height: 1.25; max-width: 880px; margin: 0; }
+  .quote-by { margin-top: 18px; font-size: 14px; color: var(--paper-dim); }
 
   /* Контакты */
-  .contacts { display: grid; gap: 14px; grid-template-columns: 1fr; }
-  @media (min-width: 720px) { .contacts { grid-template-columns: 1fr 1fr; } }
-  .contact-card { background: var(--card); border: 1px solid var(--line); border-radius: 20px; padding: 24px; }
-  .contact-card b { display: block; font-size: 13px; color: var(--muted); font-weight: 500; letter-spacing: .08em; text-transform: uppercase; margin-bottom: 6px; }
-  .contact-card a { text-decoration: none; font-size: 18px; }
+  .contacts { display: grid; gap: 18px; grid-template-columns: 1fr; margin-top: 40px; }
+  @media (min-width: 800px) { .contacts { grid-template-columns: 1.2fr 1fr; } }
+  .card { border-radius: 26px; padding: 30px; background: var(--ink-2); border: 1px solid var(--line); }
+  .card .label { font-size: 12px; letter-spacing: .2em; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; }
+  .card .big { font-family: var(--serif); font-size: 30px; line-height: 1.2; }
+  .card .note { font-size: 14px; color: var(--paper-dim); margin-top: 10px; }
+  .card a.tel { font-family: var(--serif); font-size: 30px; text-decoration: none; }
 
-  footer { padding: 36px 0 48px; border-top: 1px solid var(--line); font-size: 13px; color: var(--muted); }
+  footer { padding: 40px 0 56px; border-top: 1px solid var(--line); font-size: 13px; color: var(--paper-dim); }
   footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
-  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+  /* Мобильная нижняя панель */
+  .dock {
+    position: fixed; left: 12px; right: 12px; bottom: 12px; z-index: 15; display: none;
+    background: var(--ink-2); border: 1px solid var(--line); border-radius: 20px; padding: 12px 14px;
+    align-items: center; gap: 12px; box-shadow: 0 16px 40px -10px rgba(0,0,0,.6);
+  }
+  .dock .t { flex: 1; font-family: var(--serif); font-size: 26px; color: var(--gold); line-height: 1.1; }
+  .dock .t span { display: block; font-family: var(--sans); font-size: 12px; color: var(--paper-dim); }
+  .dock .btn { padding: 12px 18px; }
+  @media (max-width: 899px) { .dock { display: flex; } .sum-card { position: static; } }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+    .reveal { opacity: 1; transform: none; }
+    .mark .row span { transform: none; }
+    .hero p.lead, .hero .actions { opacity: 1; }
+  }
 </style>
 </head>
 <body>
 
-<header>
+<header id="top-bar">
   <div class="wrap">
-    <a class="brand" href="#top">GOOD <span>MASTER</span></a>
+    <a class="brand" href="#top">GOOD MASTER</a>
     <nav>
       <a href="#services">Услуги</a>
       <a href="#masters">Мастера</a>
@@ -114,119 +200,116 @@
   </div>
 </header>
 
-<main id="top">
-  <div class="wrap hero">
-    <div class="eyebrow">Петрозаводск · ул. Энтузиастов, 9к1</div>
-    <h1>Красота, <em>которой</em><br>доверяют</h1>
-    <p>Перманентный макияж, ресницы, маникюр и педикюр. Мастер подбирает форму и цвет под вас и согласует каждый этап.</p>
-    <div class="actions">
-      <a class="btn" href="https://vk.ru/app5688600_-53576028" target="_blank" rel="noopener">Записаться онлайн</a>
-      <a class="btn ghost" href="tel:+79114155005">Позвонить</a>
+<main>
+  <section class="hero" id="top">
+    <div class="wrap">
+      <div class="eyebrow">Петрозаводск · ул. Энтузиастов, 9к1</div>
+      <h1 class="mark">
+        <span class="row"><span>Good</span></span>
+        <span class="row"><span><em>Master</em></span></span>
+      </h1>
+      <p class="lead">Перманентный макияж, ресницы, маникюр и педикюр. Мастер подбирает форму и цвет под вас и согласует каждый этап.</p>
+      <div class="actions">
+        <a class="btn" href="https://vk.ru/app5688600_-53576028" target="_blank" rel="noopener">Записаться онлайн →</a>
+        <a class="btn ghost" href="#services">Посмотреть цены</a>
+      </div>
     </div>
-    <div class="facts">
-      <div><b>12</b>услуг в прайсе</div>
-      <div><b>5,0</b>рейтинг в ВКонтакте</div>
-      <div><b>Ежедневно</b>по предварительной записи</div>
+    <div class="meta">Ежедневно по предварительной записи<br><b>рейтинг 5,0 во ВКонтакте</b></div>
+  </section>
+
+  <div class="ticker" aria-hidden="true">
+    <div class="track">
+      <span>Перманентный макияж <i>✦</i></span><span>Наращивание ресниц <i>✦</i></span><span>Маникюр с покрытием <i>✦</i></span><span>Японский SPA-маникюр <i>✦</i></span><span>Педикюр SMART <i>✦</i></span><span>Ламинирование ресниц <i>✦</i></span>
+      <span>Перманентный макияж <i>✦</i></span><span>Наращивание ресниц <i>✦</i></span><span>Маникюр с покрытием <i>✦</i></span><span>Японский SPA-маникюр <i>✦</i></span><span>Педикюр SMART <i>✦</i></span><span>Ламинирование ресниц <i>✦</i></span>
     </div>
   </div>
 
   <section id="services">
-    <div class="wrap">
-      <div class="kicker">Услуги и цены</div>
-      <h2>Прайс студии</h2>
-      <div class="prices">
-        <div class="price-card">
-          <h3>Брови и ресницы</h3>
-          <ul>
-            <li><span>Перманентный макияж</span><b>7 000 ₽</b></li>
-            <li><span>Долговременная укладка бровей</span><b>2 100 ₽</b></li>
-            <li><span>Окрашивание бровей (краска / хна)</span><b>от 1 600 ₽</b></li>
-            <li><span>Наращивание ресниц</span><b>от 1 600 ₽</b></li>
-            <li><span>Ламинирование ресниц</span><b>2 100 ₽</b></li>
-            <li><span>Комплекс бровей и ресниц</span><b>3 900 ₽</b></li>
-          </ul>
-        </div>
-        <div class="price-card">
-          <h3>Ногти и ножки</h3>
-          <ul>
-            <li><span>Маникюр без покрытия</span><b>от 1 100 ₽</b></li>
-            <li><span>Маникюр + френч</span><b>от 2 800 ₽</b></li>
-            <li><span>Гель-лак однотон</span><b>от 2 200 ₽</b></li>
-            <li><span>Японский SPA-маникюр</span><b>2 200 ₽</b></li>
-            <li><span>Педикюр SMART</span><b>от 2 000 ₽</b></li>
-            <li><span>Педикюр + плёнки</span><b>2 700–3 500 ₽</b></li>
-          </ul>
-        </div>
+    <div class="wrap picker">
+      <div class="reveal">
+        <div class="kicker">Услуги и цены</div>
+        <h2>Соберите<br><em>свой</em> визит</h2>
+        <div class="tabs" id="tabs"></div>
+        <ul class="svc-list" id="list"></ul>
+        <p class="note" style="font-size:13px;color:var(--paper-dim);margin-top:18px">Цены из группы ВКонтакте на 12.10.2026. Точная стоимость зависит от мастера и объёма, её подтверждает администратор.</p>
       </div>
-      <p style="font-size:13px;color:var(--muted);margin-top:16px">Цены по данным группы ВКонтакте на 12.10.2026. Точная стоимость зависит от мастера и объёма, её подтверждает администратор.</p>
+      <aside class="sum-card reveal" id="sum-card">
+        <div class="label">Примерно</div>
+        <div class="total" id="total">0 ₽</div>
+        <div class="count" id="count">Отметьте услуги слева</div>
+        <a class="btn" id="book" href="https://vk.ru/app5688600_-53576028" target="_blank" rel="noopener">Записаться с этим набором →</a>
+        <div class="hint">Откроется онлайн-запись. Услуги и сумма остаются у вас на экране для сверки.</div>
+      </aside>
     </div>
   </section>
 
-  <section id="masters">
+  <section id="masters" style="padding-top:0">
     <div class="wrap">
-      <div class="kicker">Мастера</div>
-      <h2>Выбирайте своего мастера</h2>
+      <div class="kicker reveal">Мастера</div>
+      <h2 class="reveal">Выберите<br><em>своего</em> мастера</h2>
       <div class="masters">
-        <article class="master">
-          <div class="ph">Фото мастера</div>
+        <article class="master reveal">
+          <div class="ph"></div>
           <div class="info">
             <h3>Мария</h3>
-            <p>Мастер перманентного макияжа и бровист. Подбирает форму и цвет индивидуально и согласует каждый этап с клиенткой.</p>
+            <div class="role">Перманентный макияж · бровист</div>
+            <p>Подбирает форму и цвет индивидуально, согласует каждый этап с клиенткой.</p>
           </div>
         </article>
-        <article class="master">
-          <div class="ph">Фото мастера</div>
+        <article class="master reveal">
+          <div class="ph"></div>
           <div class="info">
             <h3>Надежда Артемьева</h3>
-            <p>Мастер маникюра, работает 4 года. Делает аккуратные покрытия гель-лаком.</p>
+            <div class="role">Маникюр · 4 года опыта</div>
+            <p>Аккуратный маникюр и тонкое, крепкое покрытие гель-лаком.</p>
           </div>
         </article>
-        <article class="master">
-          <div class="ph">Фото мастера</div>
+        <article class="master reveal">
+          <div class="ph"></div>
           <div class="info">
             <h3>Анна</h3>
-            <p>Мастер маникюра. Одна из клиенток во ВКонтакте отметила аккуратную работу и внимание.</p>
+            <div class="role">Маникюр</div>
+            <p>Одна из клиенток во ВКонтакте отметила аккуратную работу и внимание.</p>
           </div>
         </article>
       </div>
-      <p style="font-size:13px;color:var(--muted);margin-top:16px">Фото мастеров и работ добавит студия. Здесь заглушки.</p>
     </div>
   </section>
 
-  <section>
+  <section style="padding-top:0">
     <div class="wrap">
-      <div class="promo">
-        <div class="kicker">Акция</div>
-        <h2>Дарим 1 000 ₽ каждой</h2>
+      <div class="promo reveal">
+        <div class="kicker" style="color:var(--ink);opacity:.7">Акция</div>
+        <h2>Дарим <em>1 000 ₽</em><br>каждой</h2>
         <p>Скидка из поста студии во ВКонтакте. Условия и срок уточняйте при записи.</p>
+        <a class="btn" href="https://vk.ru/app5688600_-53576028" target="_blank" rel="noopener">Записаться →</a>
         <small>Не суммируется с другими акциями.</small>
-        <div><a class="btn" href="https://vk.ru/app5688600_-53576028" target="_blank" rel="noopener">Записаться</a></div>
       </div>
     </div>
   </section>
 
   <section>
     <div class="wrap">
-      <div class="kicker">Отзыв</div>
-      <p class="quote">Клиентка благодарит мастера маникюра за аккуратную работу, вежливость и внимание к клиенту.</p>
-      <p class="quote-by">Отзыв во ВКонтакте, июль 2026. Имя клиентки не указываем.</p>
+      <div class="kicker reveal">Отзыв</div>
+      <p class="quote reveal" style="margin-top:20px">Клиентка благодарит мастера маникюра за аккуратную работу, вежливость и внимание к клиенту.</p>
+      <p class="quote-by reveal">Отзыв во ВКонтакте, июль 2026. Имя клиентки не указываем.</p>
     </div>
   </section>
 
-  <section id="contacts">
+  <section id="contacts" style="padding-top:0">
     <div class="wrap">
-      <div class="kicker">Контакты</div>
-      <h2>Приходите</h2>
+      <div class="kicker reveal">Контакты</div>
+      <h2 class="reveal">Приходите<br><em>в гости</em></h2>
       <div class="contacts">
-        <div class="contact-card">
-          <b>Адрес</b>
-          <div style="font-size:18px">Петрозаводск, ул. Энтузиастов, 9к1</div>
-          <div style="font-size:14px;color:var(--muted);margin-top:6px">ЖК «Белые Ночи». Режим работы уточняйте: по данным 2ГИС, ежедневно с 10:00 до 21:00.</div>
+        <div class="card reveal">
+          <div class="label">Адрес</div>
+          <div class="big">Петрозаводск,<br>ул. Энтузиастов, 9к1</div>
+          <div class="note">ЖК «Белые Ночи». Режим работы уточняйте: по данным 2ГИС, ежедневно с 10:00 до 21:00.</div>
         </div>
-        <div class="contact-card">
-          <b>Записаться</b>
-          <a href="tel:+79114155005">+7 (911) 415-50-05</a>
-          <div style="margin-top:12px"><a class="btn" href="https://vk.ru/app5688600_-53576028" target="_blank" rel="noopener">Онлайн-запись</a></div>
+        <div class="card reveal">
+          <div class="label">Записаться</div>
+          <a class="tel" href="tel:+79114155005">+7 911 415 50 05</a>
+          <div style="margin-top:18px"><a class="btn" href="https://vk.ru/app5688600_-53576028" target="_blank" rel="noopener">Онлайн-запись →</a></div>
         </div>
       </div>
     </div>
@@ -236,9 +319,95 @@
 <footer>
   <div class="wrap">
     <span>GOOD MASTER · Петрозаводск</span>
-    <span>Пример лендинга. Тексты и цены из открытых источников, фото заглушки.</span>
+    <span>Пример лендинга. Тексты и цены из открытых источников, фото мастеров — заглушки.</span>
   </div>
 </footer>
 
+<div class="dock" id="dock">
+  <div class="t" id="dock-total">0 ₽<span id="dock-count">Отметьте услуги</span></div>
+  <a class="btn" id="dock-book" href="https://vk.ru/app5688600_-53576028" target="_blank" rel="noopener">Записаться</a>
+</div>
+
+<script>
+  const CATS = [
+    { title: "Брови", items: [
+      { n: "Перманентный макияж", p: 7000 },
+      { n: "Долговременная укладка бровей", p: 2100 },
+      { n: "Окрашивание бровей", d: "краска или хна", p: 1600, from: true },
+    ]},
+    { title: "Ресницы", items: [
+      { n: "Наращивание ресниц", p: 1600, from: true },
+      { n: "Ламинирование ресниц", p: 2100 },
+      { n: "Комплекс бровей и ресниц", d: "состав уточнит администратор", p: 3900 },
+    ]},
+    { title: "Маникюр", items: [
+      { n: "Маникюр без покрытия", p: 1100, from: true },
+      { n: "Маникюр + френч", d: "с укреплением или ремонтом", p: 2800, from: true },
+      { n: "Гель-лак однотон", d: "всё включено", p: 2200, from: true },
+      { n: "Японский SPA-маникюр", p: 2200 },
+    ]},
+    { title: "Педикюр", items: [
+      { n: "Педикюр SMART", p: 2000, from: true },
+      { n: "Педикюр + плёнки", p: 2700, from: true, range: "2 700–3 500 ₽" },
+    ]},
+  ];
+
+  const ALL = CATS.flatMap((c, ci) => c.items.map((it, ii) => ({ ...it, id: ci + "-" + ii })));
+  const sel = new Set();
+  let cur = 0;
+  const fmt = n => n.toLocaleString("ru-RU") + " ₽";
+
+  function renderTabs() {
+    const tabs = document.getElementById("tabs");
+    tabs.innerHTML = CATS.map((c, i) => '<button class="tab' + (i === cur ? " on" : "") + '" data-i="' + i + '">' + c.title + "</button>").join("");
+    tabs.querySelectorAll(".tab").forEach(b => b.addEventListener("click", () => { cur = +b.dataset.i; renderAll(); }));
+  }
+
+  function renderList() {
+    const list = document.getElementById("list");
+    list.innerHTML = CATS[cur].items.map((it, ii) => {
+      const id = cur + "-" + ii;
+      const price = it.range || (it.from ? "от " + fmt(it.p) : fmt(it.p));
+      return '<li data-id="' + id + '" class="' + (sel.has(id) ? "on" : "") + '">' +
+        '<span class="box"></span>' +
+        '<span class="name">' + it.n + (it.d ? '<small>' + it.d + "</small>" : "") + "</span>" +
+        '<span class="price">' + price + "</span></li>";
+    }).join("");
+    list.querySelectorAll("li").forEach(li => li.addEventListener("click", () => {
+      const id = li.dataset.id;
+      sel.has(id) ? sel.delete(id) : sel.add(id);
+      renderAll();
+    }));
+  }
+
+  function renderSum() {
+    const chosen = ALL.filter(it => sel.has(it.id));
+    const total = chosen.reduce((s, it) => s + it.p, 0);
+    const anyFrom = chosen.some(it => it.from || it.range);
+    const text = chosen.length ? (anyFrom ? "от " : "") + fmt(total) : "0 ₽";
+    const count = chosen.length
+      ? chosen.length + (chosen.length === 1 ? " услуга" : " услуги") + (anyFrom ? ", точно — после осмотра" : "")
+      : "Отметьте услуги слева";
+    document.getElementById("total").textContent = text;
+    document.getElementById("count").textContent = count;
+    document.getElementById("dock-total").firstChild.textContent = text;
+    document.getElementById("dock-count").textContent = count;
+  }
+
+  function renderAll() { renderTabs(); renderList(); renderSum(); }
+  renderAll();
+
+  // Шапка при прокрутке
+  const bar = document.getElementById("top-bar");
+  const onScroll = () => bar.classList.toggle("solid", window.scrollY > 40);
+  window.addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
+
+  // Появление блоков при прокрутке
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll(".reveal").forEach(el => io.observe(el));
+</script>
 </body>
 </html>
